@@ -1,0 +1,7 @@
+import Link from "next/link"; import Nav from "../../components/Nav"; import Stats from "../../components/Stats"; import {requireRole,isGov} from "../../lib/auth"; import {readDB} from "../../lib/db";
+export default async function Gov(){
+  await requireRole(isGov);const db=readDB();const count=(s:string)=>db.problems.filter((p:any)=>p.status===s).length;const pend=count("PENDING_MODERATION");
+  return <><Nav/><main className="container"><div className="eyebrow">Government control centre</div><h1>Jharkhand innovation dashboard</h1>
+  {pend>0&&<div className="notice">⚠️ {pend} problem(s) waiting for moderation. <Link href="/gov/moderation"><b>Review now →</b></Link></div>}
+  <Stats items={[{label:"Total problems",value:db.problems.length},{label:"Needs moderation",value:pend},{label:"Open for bids",value:count("OPEN_FOR_BIDS")},{label:"Active projects",value:db.projects.length},{label:"Bids received",value:db.bids.length}]}/>
+  <div className="grid section">{[["/gov/moderation","Moderation queue","Review, approve, reject and inspect AI triage."],["/gov/bids","Bid evaluation","Compare proposals and award projects."],["/gov/projects","Project oversight","Verify milestones and track delivery."],["/gov/ai-console","AI console","Transparent seven-stage triage pipeline."],["/gov/audit","Audit log","Every decision, who made it and when."],["/impact","Impact report","Public view of outcomes by domain and district."]].map(([h,t,d])=><Link className="card" key={h} href={h}><h2>{t}</h2><p className="muted">{d}</p></Link>)}</div></main></>}

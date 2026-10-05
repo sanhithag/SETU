@@ -1,0 +1,49 @@
+{
+  "users": [
+    {"id":"u1","email":"citizen@demo.in","password":"demo123","name":"Asha Kumari","role":"CITIZEN"},
+    {"id":"u2","email":"gov@demo.in","password":"demo123","name":"Government Moderator","role":"GOV_ADMIN"},
+    {"id":"u3","email":"university@demo.in","password":"demo123","name":"BIT Water Research Team","role":"UNIVERSITY"},
+    {"id":"u4","email":"industry@demo.in","password":"demo123","name":"CSR Partnerships","role":"INDUSTRY"}
+  ],
+  "districts": [
+    {"id":"d1","name":"Khunti","division":"South Chotanagpur","lat":23.0765,"lng":85.2782},
+    {"id":"d2","name":"Ranchi","division":"South Chotanagpur","lat":23.3441,"lng":85.3096},
+    {"id":"d3","name":"East Singhbhum","division":"Kolhan","lat":22.8046,"lng":86.2029},
+    {"id":"d4","name":"Hazaribagh","division":"North Chotanagpur","lat":23.9966,"lng":85.3691},
+    {"id":"d5","name":"Dumka","division":"Santhal Pargana","lat":24.2676,"lng":87.2497}
+  ],
+  "organisations": [
+    {"id":"o1","name":"BIT Mesra","type":"UNIVERSITY","districtId":"d2","domains":["Water","Environment","Engineering"],"capacity":4,"active":2,"verified":true},
+    {"id":"o2","name":"NIT Jamshedpur","type":"UNIVERSITY","districtId":"d3","domains":["Infrastructure","AI & Data"],"capacity":5,"active":3,"verified":true},
+    {"id":"o3","name":"Jharkhand CSR Alliance","type":"INDUSTRY","districtId":"d2","domains":["Water","Healthcare","Livelihoods"],"capacity":10,"active":4,"verified":true},
+    {"id":"o4","name":"GreenTech Industries","type":"INDUSTRY","districtId":"d3","domains":["Environment","Energy"],"capacity":8,"active":5,"verified":true}
+  ],
+  "problems": [
+    {
+      "id":"p1","title":"Contaminated borewell near school","description":"The borewell used by families near a government school in Khunti has a metallic taste and several children reported stomach problems. Water testing has not been done recently.","districtId":"d1","location":"Khunti, near the government school","domain":"Water","subdomain":"Drinking Water","priority":"P1","status":"OPEN_FOR_BIDS","submittedById":"u1","corroborationCount":18,"aiSummary":"Likely drinking-water quality issue requiring field testing and remediation assessment.","createdAt":"2026-09-12T09:30:00Z","triageCompletedAt":"2026-09-12T09:31:20Z"
+    },
+    {
+      "id":"p2","title":"Broken streetlights on village access road","description":"Eight streetlights have stopped working on the road connecting the village to the health centre. The road becomes unsafe after sunset.","districtId":"d2","location":"Ranchi rural block","domain":"Urban Infrastructure","subdomain":"Public Lighting","priority":"P2","status":"PENDING_MODERATION","submittedById":"u1","corroborationCount":7,"aiSummary":"Clustered public-lighting outage with safety implications.","createdAt":"2026-09-15T13:10:00Z"
+    },
+    {
+      "id":"p3","title":"Crop irrigation scheduling problem","description":"Small farmers are over-pumping groundwater because there is no simple way to schedule irrigation around rainfall. A low-cost advisory system is requested.","districtId":"d4","location":"Hazaribagh block","domain":"Agriculture","subdomain":"Irrigation","priority":"P3","status":"VALIDATED","submittedById":"u1","corroborationCount":11,"aiSummary":"Opportunity for rainfall-aware irrigation advisory and resource optimisation.","createdAt":"2026-09-14T06:20:00Z"
+    }
+  ],
+  "bids": [
+    {"id":"b1","problemId":"p1","orgId":"o1","title":"Community Water Safety Pilot","approach":"Collect samples, test for contamination, map the source and prototype a low-cost treatment recommendation.","teamMembers":[{"name":"Riya","role":"Student Lead"},{"name":"Kabir","role":"Water Quality"},{"name":"Meera","role":"Field Operations"},{"name":"Arjun","role":"Data"}],"timeline":"8 weeks","budget":180000,"status":"SUBMITTED","score":86},
+    {"id":"b2","problemId":"p1","orgId":"o2","title":"Sensor-assisted Borewell Monitoring","approach":"Deploy low-cost water-quality sensors and a dashboard for recurring measurements.","teamMembers":[{"name":"Ishita","role":"PI"},{"name":"Dev","role":"IoT"},{"name":"Neel","role":"Data"},{"name":"Sara","role":"Field"}],"timeline":"10 weeks","budget":220000,"status":"SUBMITTED","score":82}
+  ],
+  "projects": [
+    {"id":"pr1","problemId":"p1","solutionBidId":"b1","universityOrgId":"o1","status":"ACTIVE","funding":200000,"targetCompletionAt":"2026-11-10","milestones":[
+      {"id":"m1","title":"Baseline water testing","dueDate":"2026-09-25","status":"VERIFIED"},
+      {"id":"m2","title":"Remediation prototype","dueDate":"2026-10-15","status":"IN_PROGRESS"},
+      {"id":"m3","title":"Community validation","dueDate":"2026-11-10","status":"PENDING"}
+    ]}
+  ],
+  "notifications": [
+    {"id":"n1","userId":"u1","title":"Your problem is now open for bids","body":"Government triage is complete for the Khunti borewell problem.","read":false}
+  ],
+  "audit": [
+    {"id":"a1","actorId":"u2","actorRole":"GOV_ADMIN","entityType":"Problem","entityId":"p1","action":"OPEN_FOR_BIDS","createdAt":"2026-09-12T09:32:00Z"}
+  ]
+}

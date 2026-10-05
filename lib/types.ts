@@ -1,0 +1,5 @@
+export type Role = "CITIZEN" | "UNIVERSITY" | "INDUSTRY" | "GOV_ADMIN" | "GOV_MODERATOR";
+export type ProblemStatus = "DRAFT"|"SUBMITTED"|"AI_TRIAGE"|"SPAM_QUARANTINE"|"DUPLICATE_MERGED"|"NEEDS_CLARIFICATION"|"PENDING_MODERATION"|"VALIDATED"|"ROUTED"|"OPEN_FOR_BIDS"|"BIDDING_CLOSED"|"AWARDED"|"IN_PROGRESS"|"UNDER_REVIEW"|"SOLUTION_VALIDATED"|"DEPLOYED"|"IMPACT_VERIFIED"|"ON_HOLD"|"REJECTED"|"ARCHIVED";
+export type Problem = { id:string; title:string; description:string; districtId:string; location:string; domain:string; subdomain:string; priority:string; priorityScore?:number; categories?:{primary:string;secondary:string[]}; keywords?:string[]; status:ProblemStatus; submittedById:string; corroborationCount:number; aiSummary?:string; photos?:string[]; createdAt:string; triageCompletedAt?:string };
+export type Bid = { id:string; problemId:string; orgId:string; title:string; approach:string; teamMembers:any[]; timeline:string; budget:number; status:string; score?:number };
+export type Organisation = { id:string; name:string; type:"UNIVERSITY"|"INDUSTRY"; districtId:string; domains:string[]; capacity:number; active:number; verified:boolean };

@@ -1,0 +1,1 @@
+export default function Status({children}:{children:React.ReactNode}){return <span className="status">{children}</span>}

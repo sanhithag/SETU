@@ -1,0 +1,3 @@
+import Nav from "../../components/Nav"; import ProblemExplorer from "../../components/ProblemExplorer"; import {readDB} from "../../lib/db";
+export const dynamic="force-dynamic";
+export default function Problems(){const db=readDB();const visible=db.problems.filter((p:any)=>!["SPAM_QUARANTINE","REJECTED","DRAFT"].includes(p.status));return <><Nav/><main className="container"><div className="eyebrow">Public problem browser</div><h1>Community challenges</h1><p className="muted">Search, filter and support civic problems. Corroborating a problem helps government prioritise it.</p><ProblemExplorer problems={visible}/></main></>}

@@ -1,0 +1,6 @@
+import Link from "next/link"; import Nav from "../../../components/Nav"; import Status from "../../../components/Status"; import {ModerationButtons} from "../../../components/Actions"; import {requireRole,isGov} from "../../../lib/auth"; import {readDB} from "../../../lib/db";
+export const dynamic="force-dynamic";
+export default async function Moderation(){
+  await requireRole(isGov);const db=readDB();const ps=db.problems.filter((p:any)=>["PENDING_MODERATION","SPAM_QUARANTINE","NEEDS_CLARIFICATION"].includes(p.status));
+  return <><Nav/><main className="container"><div className="eyebrow">Government</div><h1>Moderation queue</h1><p className="muted">AI is advisory. A moderator makes the final validation decision.</p>
+  <div className="section">{ps.length?ps.map((p:any)=><div className="card" key={p.id} style={{marginBottom:14}}><div className="row"><span className={`priority ${p.priority}`}>{p.priority}</span><Status>{p.status.replaceAll("_"," ")}</Status></div><h3><Link href={`/problems/${p.id}`}>{p.title}</Link></h3><p className="muted">{p.description}</p><div className="notice">🤖 {p.aiSummary||"No AI summary."}</div><ModerationButtons id={p.id}/></div>):<div className="card empty">🎉 Queue is empty — nothing to moderate.</div>}</div></main></>}

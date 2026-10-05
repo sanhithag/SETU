@@ -1,0 +1,1 @@
+export default function Stats({items}:{items:{label:string,value:string|number,sub?:string}[]}){return <div className="stats">{items.map(x=><div className="stat" key={x.label}><div className="muted">{x.label}</div><strong>{x.value}</strong>{x.sub&&<small>{x.sub}</small>}</div>)}</div>}

@@ -1,0 +1,8 @@
+import Link from "next/link"; import Nav from "../../components/Nav";
+const ROLES=[["Citizens","Report problems in minutes, support others’ reports, and watch progress from submission to verified impact."],["Government","Moderate AI-triaged reports, evaluate bids side-by-side, award projects and verify milestones. Every action is audit-logged."],["Universities","Find open problems matched to your domains and capacity, and submit sealed proposals."],["Industry","Partner on deployment and funding with verified, trackable projects."]];
+const FAQ=[["Does AI make the decisions?","No. AI is advisory — it suggests a domain, priority and routing, and a human moderator decides."],["Who can see my report?","Approved problems are public so others can corroborate them. Spam and rejected items are hidden."],["How are bids scored?","By domain fit, proposal depth, and organisational capacity. Government makes the final award."]];
+export default function About(){return <><Nav/><main className="container"><div className="eyebrow">How it works</div><h1>From local problem to verified impact</h1>
+  <ol className="timeline" style={{margin:"26px 0"}}>{["Report","AI triage","Moderation","Bidding","Award","Delivery","Impact"].map((s,i)=><li key={s} className="done"><i>{i+1}</i><span>{s}</span></li>)}</ol>
+  <div className="grid">{ROLES.map(([t,d])=><div className="card" key={t}><h3>{t}</h3><p className="muted">{d}</p></div>)}</div>
+  <section className="section"><h2>FAQ</h2>{FAQ.map(([q,a])=><div className="card" key={q} style={{marginBottom:10}}><b>{q}</b><p className="muted">{a}</p></div>)}</section>
+  <div className="actions"><Link className="btn primary" href="/login">Try the demo</Link><Link className="btn" href="/problems">Browse problems</Link></div></main></>}
