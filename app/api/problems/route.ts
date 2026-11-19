@@ -90,8 +90,4 @@ export async function POST(req: Request) {
   writeDB(db);
 
   return NextResponse.json({ problem: p });
-<<<<<<< Updated upstream
 }
-=======
-}
->>>>>>> Stashed changes
